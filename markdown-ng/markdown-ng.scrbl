@@ -1,7 +1,7 @@
 #lang scribble/manual
 @require[scribble/eval
-         (for-label markdown
-                    markdown/scrib
+         (for-label markdown-ng
+                    markdown-ng/scrib
                     racket/base
                     racket/class
                     racket/contract
@@ -17,8 +17,8 @@
                                xexpr->string))]
 
 
-@title[#:tag "top"]{markdown}
-@author[@hyperlink["https://github.com/greghendershott/markdown"]{Greg Hendershott}]
+@title[#:tag "top"]{markdown-ng}
+@author[@hyperlink["https://github.com/pmatos/markdown-ng"]{Paulo Matos}]
 
 @section[#:tag "quick-start"]{Quick start}
 
@@ -39,7 +39,7 @@ You can run this at the command-line: Pipe in markdown and it pipes
 out HTML.
 
 @codeblock|{
-$ raco markdown
+$ raco md
 I am _emph_ and I am **strong**.
 ^D
 <!DOCTYPE html>
@@ -59,7 +59,7 @@ You can modify the @racket[(listof xexpr?)], splice it into the @tt{body}
 element of an @tt{(html ...)} wrapper, and convert to HTML text.
 
 @examples[#:eval (make-base-eval #:pretty-print? #t)
-(eval:no-prompt (require markdown))
+(eval:no-prompt (require markdown-ng))
 
 (code:comment "1. Parse string to a list of xexprs")
 (eval:no-prompt (define xs (parse-markdown "I am _emph_ and I am **strong**.")))
@@ -94,8 +94,8 @@ like to go around in circles).
 @codeblock|{
 #lang racket/base
 
-(require markdown
-         markdown/scrib
+(require markdown-ng
+         markdown-ng/scrib
          net/sendurl
          racket/class
          racket/format
@@ -174,15 +174,15 @@ other implementations. The many unit tests from the old version also helped.
 
 @section[#:tag "api"]{API}
 
-@defmodule[markdown]
+@defmodule[markdown-ng]
 
-The @racketmodname[markdown] module provides all bindings from the
-@racketmodname[markdown/display-xexpr],
-@racketmodname[markdown/parse],
-and @racketmodname[markdown/toc] modules.
+The @racketmodname[markdown-ng] module provides all bindings from the
+@racketmodname[markdown-ng/display-xexpr],
+@racketmodname[markdown-ng/parse],
+and @racketmodname[markdown-ng/toc] modules.
 
 @subsection{Parsing Markdown}
-@defmodule[markdown/parse]
+@defmodule[markdown-ng/parse]
 
 @defproc[(parse-markdown [input (or/c path? string?)] [footnote-prefix-symbol? symbol? (gensym)]) (listof xexpr?)]{
   Parses an entire markdown file.
@@ -259,7 +259,7 @@ and @litchar{\\)} delimiters and display within @litchar{\\[} and
 
 
 @subsection{Displaying Parsed Markdown}
-@defmodule[markdown/display-xexpr]
+@defmodule[markdown-ng/display-xexpr]
 
 @defproc[(display-xexpr [xexpr xexpr?]) any/c]{
   Prints an HTML representation of @racket[xexpr] to @racket[current-output-port].
@@ -272,9 +272,9 @@ and @litchar{\\)} delimiters and display within @litchar{\\[} and
 
 
 @subsection{Generating Pre-Scribble}
-@defmodule[markdown/scrib]
+@defmodule[markdown-ng/scrib]
 
-The bindings documented in this section are @bold{not} provided by the @racketmodname[markdown] module.
+The bindings documented in this section are @bold{not} provided by the @racketmodname[markdown-ng] module.
 
 @defproc[(xexprs->scribble-pres [xexprs (listof xexpr?)]) (listof (or/c pre-part? pre-flow? pre-content?))]{
   Given a list of xexprs representing valid HTML, return a Scribble

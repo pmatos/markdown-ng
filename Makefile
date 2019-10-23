@@ -1,4 +1,4 @@
-PACKAGE-NAME=markdown
+PACKAGE-NAME=markdown-ng
 
 # Racket 6.1 adds pkg dep checking.
 ifeq ($(findstring "$(RACKET_VERSION)", "6.0", "6.0.1"),)
