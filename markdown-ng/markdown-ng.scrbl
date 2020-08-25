@@ -247,7 +247,7 @@ and @litchar{\\)} delimiters and display within @litchar{\\[} and
 
 
 @subsection{Building a Table of Contents}
-@defmodule[markdown/toc]
+@defmodule[markdown-ng/toc]
 
 @defproc[(toc [xexprs (listof xexpr?)]) xexpr?]{
   Builds a table of contents from the given markdown expression.
