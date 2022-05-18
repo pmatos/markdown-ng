@@ -13,5 +13,6 @@
                      "rackunit-lib"
                      "redex-lib"
                      "scribble-doc"
-                     "sexp-diff"))
+                     "sexp-diff"
+                     "markdown"))
 (define test-omit-paths '("MarkdownTest_1.0.3" "test"))
